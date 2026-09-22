@@ -1,0 +1,25 @@
+# Data (UrbanSound8K is downloaded separately, not committed)
+data/UrbanSound8K/
+*.wav
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+env/
+*.egg-info/
+
+# Extracted features / model artifacts
+features/*.npy
+features/*.csv
+models/*.joblib
+models/*.pkl
+
+# Jupyter
+.ipynb_checkpoints/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
