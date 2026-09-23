@@ -1,6 +1,8 @@
 # Data (UrbanSound8K is downloaded separately, not committed)
 data/UrbanSound8K/
 *.wav
+*.tar.gz
+*.zip
 
 # Python
 __pycache__/
