@@ -7,7 +7,7 @@ data/UrbanSound8K/
 # Python
 __pycache__/
 *.pyc
-.venv/
+.venv
 venv/
 env/
 *.egg-info/
@@ -15,8 +15,11 @@ env/
 # Extracted features / model artifacts
 features/*.npy
 features/*.csv
+features/*.npz
 models/*.joblib
 models/*.pkl
+models/*.pt
+slurm-logs/
 
 # Jupyter
 .ipynb_checkpoints/
