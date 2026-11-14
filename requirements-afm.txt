@@ -1,0 +1,10 @@
+-r requirements.txt
+# CLAP 1.1.7 relaxes the 1.1.6 NumPy pin and supports Python 3.12 wheels.
+laion-clap==1.1.7
+numpy==1.26.4
+pandas==2.2.3
+transformers==4.51.3
+# Keep PyTorch audio/vision packages from the same release family when installing.
+torch==2.6.0
+torchaudio==2.6.0
+torchvision==0.21.0

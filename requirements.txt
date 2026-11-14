@@ -8,3 +8,6 @@ seaborn
 tqdm
 joblib
 torch
+transformers
+torchaudio
+huggingface_hub

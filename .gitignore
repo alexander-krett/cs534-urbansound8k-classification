@@ -28,3 +28,8 @@ slurm-logs/
 .DS_Store
 Thumbs.db
 .vscode/
+
+# AFM downloaded checkpoints, source, caches and reports
+checkpoints/afm/
+features/afm/
+models/afm/
