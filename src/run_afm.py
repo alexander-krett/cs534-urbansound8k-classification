@@ -92,6 +92,17 @@ def setup(checkpoint_dir: Path, beats_url: str) -> None:
     print('Checkpoint setup complete.', flush=True)
 
 
+def git_output(repository: Path, *arguments: str) -> str:
+    """Git provenance is optional on compute nodes; source hashes remain recorded."""
+    fallback = os.environ.get('AFM_GIT_REVISION', 'unknown') if arguments == ('rev-parse', 'HEAD') else 'unknown'
+    try:
+        result = subprocess.run(['git', *arguments], cwd=repository, capture_output=True,
+                                text=True, check=False)
+    except OSError:
+        return fallback
+    return result.stdout.strip() if result.returncode == 0 else fallback
+
+
 def synthetic_smoke() -> None:
     import numpy as np
     from afm_features import fuse_embeddings, l2_normalize, PROMPTS
@@ -141,9 +152,6 @@ def main(argv=None) -> None:
     prototypes, text_provenance = text_prototypes(args.checkpoint_dir, device=args.device)
     provenance['text'] = text_provenance
     repository = Path(__file__).resolve().parents[1]
-    def git_output(*arguments):
-        result = subprocess.run(['git', *arguments], cwd=repository, capture_output=True, text=True, check=False)
-        return result.stdout.strip() if result.returncode == 0 else 'unknown'
     versions = {'python': platform.python_version()}
     for package in ('numpy', 'pandas', 'scikit-learn', 'torch', 'torchaudio', 'laion-clap', 'librosa'):
         try:
@@ -151,8 +159,8 @@ def main(argv=None) -> None:
         except importlib.metadata.PackageNotFoundError:
             versions[package] = 'not installed'
     provenance['run'] = {
-        'git_revision': git_output('rev-parse', 'HEAD'),
-        'working_tree_status': git_output('status', '--porcelain'),
+        'git_revision': git_output(repository, 'rev-parse', 'HEAD'),
+        'working_tree_status': git_output(repository, 'status', '--porcelain'),
         'source_sha256': {p.name: sha256(p) for p in Path(__file__).parent.glob('*afm*.py')},
         'versions': versions, 'seed': args.seed, 'epochs_max': args.epochs,
         'batch_size': args.batch_size, 'device': args.device,

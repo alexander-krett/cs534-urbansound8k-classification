@@ -1,0 +1,2449 @@
+{
+  "labels": [
+    "air_conditioner",
+    "car_horn",
+    "children_playing",
+    "dog_bark",
+    "drilling",
+    "engine_idling",
+    "gun_shot",
+    "jackhammer",
+    "siren",
+    "street_music"
+  ],
+  "provenance": {
+    "models": {
+      "clap": "630k-audioset-best.pt",
+      "beats": "BEATs_iter3_plus_AS2M.pt"
+    },
+    "checkpoint_sha256": {
+      "630k-audioset-best.pt": "8053c9775516af2f4902e1e8281e356cc1bf7a85e8b761908170767b77c3f037",
+      "BEATs_iter3_plus_AS2M.pt": "d43cbfad4d7b56381c061d7a24774f908d4d94c72961f6eb1d9090ff18cd8d34"
+    },
+    "beats_source_revision": "31c5b904ca1bf2afb4c234a6675c683a4e5fc7cd",
+    "preprocessing": {
+      "clap": {
+        "sample_rate": 48000,
+        "mono": true,
+        "samples": 480000,
+        "length_policy": "floor-repeat then zero-pad short; truncate-long"
+      },
+      "beats": {
+        "sample_rate": 16000,
+        "mono": true,
+        "pooling": "mean over valid temporal frames",
+        "minimum_samples": 3200,
+        "short_policy": "zero-pad to 200ms, mask padded samples"
+      }
+    },
+    "cache": "features/afm/afm_features.npz",
+    "cache_hit": true,
+    "signature": {
+      "metadata_sha256": "186536c150792b275065a678789df4b005c262ed3e3a7deddd535d41c691c3a5",
+      "audio_sha256": "284a3887f6dea146e54bee5ff655748d7886b02f527f4a32fcfda470a90f5cb0",
+      "checkpoints": {
+        "630k-audioset-best.pt": "8053c9775516af2f4902e1e8281e356cc1bf7a85e8b761908170767b77c3f037",
+        "BEATs_iter3_plus_AS2M.pt": "d43cbfad4d7b56381c061d7a24774f908d4d94c72961f6eb1d9090ff18cd8d34"
+      },
+      "beats_source_revision": "31c5b904ca1bf2afb4c234a6675c683a4e5fc7cd",
+      "beats_source_sha256": {
+        "BEATs.py": "27f289db7c56ce26f2ceb50d3719854b91b2dec1c2830d8b1dd8de1bbee19eeb",
+        "backbone.py": "31c0378379a7e0f1d1069f9da444fb86890fe1ea078959a2dcd39640cdcadbaa",
+        "modules.py": "edeb6b6cd6a784da749f932c3e0783c0bce556fc768d0d23a4d53d4b819eb424"
+      },
+      "laion_clap_version": "1.1.7",
+      "laion_clap_source_sha256": {
+        "__init__.py": "17fff02fa6188d8984527bf71a1c9723233f9236aa8d7535cab3995f60d05bd6",
+        "clap_module/__init__.py": "451e225fe2fcba83d7f098ffc156292acd408eae7222cad3140f2656b123f934",
+        "clap_module/bert.py": "46bc33be0090bd7f1dc4dd02a9856559ed4fef6f5d2b51640240ad78351eeacb",
+        "clap_module/factory.py": "ec14ffdc0ea37171e45b7697091e026136020c2ddb0aa07f0e29eb2e58b5d56c",
+        "clap_module/feature_fusion.py": "878c98e926e0c734e469c7cf9419cf0bd98af9b0f224f66f04cabc2b3bad6a9f",
+        "clap_module/htsat.py": "25b817819fd90d27dd5a2539750e984c55b394cc3c000b0eba20f4b3723a74eb",
+        "clap_module/linear_probe.py": "e8ef89ef622b76c9e560d0bac6c733702fc6dbe3e8e8c71057507a8d20810cde",
+        "clap_module/loss.py": "c2be8cdd6f148d5526bdbc27350ebbcfa21e269961bf592f637c992840ac214c",
+        "clap_module/model.py": "1b3639cddc977cf304b9c64e359dacf2dfaab49f91c4209bd9d29f6268222ec4",
+        "clap_module/openai.py": "b90a36c71a4030ede666db4a2e394e1cecd87ef303f9486989f3125a9e5f5330",
+        "clap_module/pann_model.py": "52a4fda51030a3669803ed3d8fccf03d7509ab124d922e32cb620e05e74b23e8",
+        "clap_module/pretrained.py": "cb6dd462d6e219b8052adf7271198805c808b14244a62eac542018e1fdfb5dac",
+        "clap_module/timm_model.py": "0ebbf6c6533390be7651c5951c7474f5910f54f914d40d6c880af7e74029e3f9",
+        "clap_module/tokenizer.py": "badc1e522a939e145faab2aea60c5d0a015761e69175ace432dfb3fc31ecb896",
+        "clap_module/transform.py": "057de43fa5732f1328913629352d7d0b00db8a7c0e021b2aa88bbfab06b8638a",
+        "clap_module/utils.py": "399cd0e8c20998a1aa8db9ae3fec3f949e07e0296b675c4917f9cfcfc9816ed0",
+        "clap_module/version.py": "3e6710d8f236a0ff22ae72ed24b25bcb661f5bab01bcb0262fe569001cd3ab07",
+        "evaluate/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "evaluate/eval_dcase.py": "7eca60b0f9dfe4c26d818ce887f6b5a3db132bba9ac830a0e048e9382724a8fb",
+        "evaluate/eval_linear_probe.py": "239b6e627069bae6bc41b350bdd741413b99d8d232c57e2c860d56065c81978b",
+        "evaluate/eval_retrieval.py": "0f72cf12baf7506af172a2f36b3a10ab7fccaa9cf86f790c93f6d3a5403c4adb",
+        "evaluate/eval_retrieval_main.py": "d22806ca61df376388e3d5458cc665d2661f2a824c193b02cd47bbcfea7abe93",
+        "evaluate/eval_zeroshot_classification.py": "7296ce460e246fb16df2a76637d3fd6c9ed6ddb65840c697a722f8c71ec99205",
+        "hook.py": "a9001b213768528d667589e6dd4d7f92f107943a5e1ce3149ee6de1a520f9c15",
+        "training/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "training/data.py": "b958fc34aa9cac44103b663374c3c49aee4580dec8740b9dd1e17054c8c6e5dc",
+        "training/distributed.py": "1121264df45a9428f8d1510285b6a1e47d5e15df390f73594d8727dbb0a4c116",
+        "training/imagenet_zeroshot_data.py": "bcd4d3f055783951a205782f94cc9aff73a4f2d457d30f96c3f26cbd1ad08e1b",
+        "training/infer_demo.py": "740638fab727ad2ff8090214e00ae47df544595c451cc8e6e1031e1cdad2dacd",
+        "training/logger.py": "d90ffad0a42e9d8f1b15af6a0db819e178d6a880f8203c6a51368856cd26f3ee",
+        "training/lp_main.py": "3d408f186b70d17d1743dfe9acd8de503eb9bffde2abaff50110084b205df121",
+        "training/lp_train.py": "9c5b92a22a78554f9c55035b2d677b71345ec8cdf671a7d2cc4badd4a0f60048",
+        "training/main.py": "1859c7e28df05a94c458550882bb03a2c2d324391efd41bb71cd5fac407efebb",
+        "training/params.py": "ec272ce3a0be09ad8ffd7bc903a215c7ebc9b7b10d7611ce0e5e74b11e4053ea",
+        "training/scheduler.py": "77767a9af54c1e90c38404e334b6f660254204a84aa1f0a6a199bbda1765141c",
+        "training/train.py": "37e17bc7b17afc0d1ca86f45b61521f480f0d93385c2a610206a9aec3174dc15",
+        "training/zero_shot.py": "530ec5bcf10a11cbd66ee56178f7381d0a0e9d5fdde27fe4f70891abcff3a728",
+        "unit_test.py": "62c65330b490a97eb28902ce88f2dfb4fa01918abdc63e5522dd14842eb6df5c"
+      },
+      "preprocessing": {
+        "clap": {
+          "sample_rate": 48000,
+          "mono": true,
+          "samples": 480000,
+          "length_policy": "floor-repeat then zero-pad short; truncate-long"
+        },
+        "beats": {
+          "sample_rate": 16000,
+          "mono": true,
+          "pooling": "mean over valid temporal frames",
+          "minimum_samples": 3200,
+          "short_policy": "zero-pad to 200ms, mask padded samples"
+        }
+      },
+      "extractor_sha256": "fb7c57c09cff4797fdc20c58ba76b43061dc4aff052abd85633f487e1f19a453",
+      "dependency_versions": {
+        "torch": "2.6.0",
+        "torchaudio": "2.6.0",
+        "librosa": "0.11.0",
+        "numpy": "1.26.4"
+      },
+      "smoke_limit": null
+    },
+    "text": {
+      "model": "630k-audioset-best.pt",
+      "checkpoint_sha256": "8053c9775516af2f4902e1e8281e356cc1bf7a85e8b761908170767b77c3f037",
+      "prompts": [
+        "An audio recording of an air conditioner running.",
+        "An audio recording of a car horn honking.",
+        "An audio recording of children playing.",
+        "An audio recording of a dog barking.",
+        "An audio recording of drilling.",
+        "An audio recording of an engine idling.",
+        "An audio recording of a gunshot.",
+        "An audio recording of a jackhammer operating.",
+        "An audio recording of a siren sounding.",
+        "An audio recording of street music."
+      ],
+      "classes": [
+        "air_conditioner",
+        "car_horn",
+        "children_playing",
+        "dog_bark",
+        "drilling",
+        "engine_idling",
+        "gun_shot",
+        "jackhammer",
+        "siren",
+        "street_music"
+      ]
+    },
+    "run": {
+      "git_revision": "dbbf9c125370442654ac2bc8db11881892f954d0",
+      "working_tree_status": "unknown",
+      "source_sha256": {
+        "run_afm.py": "060b0889261fcf1348f6ed3883fb551cae363e05b54893dd2fa697e8525c92ca",
+        "afm_evaluate.py": "a01d16cd8b71e1742334f78856d1b65989b8c573c8f5ca4446df4ad47ecb71d4",
+        "afm_features.py": "fb7c57c09cff4797fdc20c58ba76b43061dc4aff052abd85633f487e1f19a453"
+      },
+      "versions": {
+        "python": "3.12.10",
+        "numpy": "1.26.4",
+        "pandas": "2.2.3",
+        "scikit-learn": "1.9.1",
+        "torch": "2.6.0",
+        "torchaudio": "2.6.0",
+        "laion-clap": "1.1.7",
+        "librosa": "0.11.0"
+      },
+      "seed": 122333,
+      "epochs_max": 100,
+      "batch_size": 64,
+      "device": "cuda",
+      "svm": {
+        "C": 10,
+        "kernel": "rbf",
+        "gamma": "scale"
+      },
+      "mlp": {
+        "hidden_dim": 256,
+        "dropout": 0.3,
+        "optimizer": "Adam",
+        "learning_rate": 0.001,
+        "patience": 10,
+        "validation": "next official fold cyclically; fresh scaler/model refit all nine training folds"
+      }
+    }
+  },
+  "folds": {
+    "1": {
+      "accuracy": 0.845360824742268,
+      "macro_precision": 0.8826578591969577,
+      "macro_recall": 0.8659166666666668,
+      "macro_f1": 0.8659945137214787,
+      "weighted_precision": 0.8633935099792271,
+      "weighted_recall": 0.845360824742268,
+      "weighted_f1": 0.8445773346688791,
+      "per_class": {
+        "air_conditioner": {
+          "classID": 0,
+          "precision": 0.7948717948717948,
+          "recall": 0.62,
+          "f1": 0.6966292134831461,
+          "support": 100
+        },
+        "car_horn": {
+          "classID": 1,
+          "precision": 1.0,
+          "recall": 0.9166666666666666,
+          "f1": 0.9565217391304348,
+          "support": 36
+        },
+        "children_playing": {
+          "classID": 2,
+          "precision": 0.979381443298969,
+          "recall": 0.95,
+          "f1": 0.9644670050761421,
+          "support": 100
+        },
+        "dog_bark": {
+          "classID": 3,
+          "precision": 0.7480916030534351,
+          "recall": 0.98,
+          "f1": 0.8484848484848485,
+          "support": 100
+        },
+        "drilling": {
+          "classID": 4,
+          "precision": 0.6,
+          "recall": 0.87,
+          "f1": 0.710204081632653,
+          "support": 100
+        },
+        "engine_idling": {
+          "classID": 5,
+          "precision": 0.8974358974358975,
+          "recall": 0.7291666666666666,
+          "f1": 0.8045977011494253,
+          "support": 96
+        },
+        "gun_shot": {
+          "classID": 6,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 35
+        },
+        "jackhammer": {
+          "classID": 7,
+          "precision": 0.8837209302325582,
+          "recall": 0.6333333333333333,
+          "f1": 0.7378640776699029,
+          "support": 120
+        },
+        "siren": {
+          "classID": 8,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 86
+        },
+        "street_music": {
+          "classID": 9,
+          "precision": 0.9230769230769231,
+          "recall": 0.96,
+          "f1": 0.9411764705882353,
+          "support": 100
+        }
+      },
+      "confusion_matrix": [
+        [
+          62,
+          0,
+          0,
+          33,
+          1,
+          4,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          33,
+          0,
+          0,
+          0,
+          0,
+          0,
+          2,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          95,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          5
+        ],
+        [
+          0,
+          0,
+          2,
+          98,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          7,
+          0,
+          0,
+          0,
+          87,
+          2,
+          0,
+          1,
+          0,
+          3
+        ],
+        [
+          8,
+          0,
+          0,
+          0,
+          15,
+          70,
+          0,
+          3,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          35,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          42,
+          2,
+          0,
+          76,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          86,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          4,
+          0,
+          96
+        ]
+      ]
+    },
+    "2": {
+      "accuracy": 0.8918918918918919,
+      "macro_precision": 0.9037014771030624,
+      "macro_recall": 0.9030238095238096,
+      "macro_f1": 0.9015190570268995,
+      "weighted_precision": 0.8928952553615276,
+      "weighted_recall": 0.8918918918918919,
+      "weighted_f1": 0.89024371075131,
+      "per_class": {
+        "air_conditioner": {
+          "classID": 0,
+          "precision": 0.8378378378378378,
+          "recall": 0.93,
+          "f1": 0.8815165876777251,
+          "support": 100
+        },
+        "car_horn": {
+          "classID": 1,
+          "precision": 0.926829268292683,
+          "recall": 0.9047619047619048,
+          "f1": 0.9156626506024096,
+          "support": 42
+        },
+        "children_playing": {
+          "classID": 2,
+          "precision": 0.9245283018867925,
+          "recall": 0.98,
+          "f1": 0.9514563106796117,
+          "support": 100
+        },
+        "dog_bark": {
+          "classID": 3,
+          "precision": 0.9339622641509434,
+          "recall": 0.99,
+          "f1": 0.9611650485436893,
+          "support": 100
+        },
+        "drilling": {
+          "classID": 4,
+          "precision": 0.8936170212765957,
+          "recall": 0.84,
+          "f1": 0.865979381443299,
+          "support": 100
+        },
+        "engine_idling": {
+          "classID": 5,
+          "precision": 0.8252427184466019,
+          "recall": 0.85,
+          "f1": 0.8374384236453202,
+          "support": 100
+        },
+        "gun_shot": {
+          "classID": 6,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 35
+        },
+        "jackhammer": {
+          "classID": 7,
+          "precision": 0.8415841584158416,
+          "recall": 0.7083333333333334,
+          "f1": 0.7692307692307693,
+          "support": 120
+        },
+        "siren": {
+          "classID": 8,
+          "precision": 0.9873417721518988,
+          "recall": 0.8571428571428571,
+          "f1": 0.9176470588235294,
+          "support": 91
+        },
+        "street_music": {
+          "classID": 9,
+          "precision": 0.8660714285714286,
+          "recall": 0.97,
+          "f1": 0.9150943396226415,
+          "support": 100
+        }
+      },
+      "confusion_matrix": [
+        [
+          93,
+          3,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          3
+        ],
+        [
+          1,
+          38,
+          0,
+          0,
+          3,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          98,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          2
+        ],
+        [
+          1,
+          0,
+          0,
+          99,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          84,
+          0,
+          0,
+          16,
+          0,
+          0
+        ],
+        [
+          4,
+          0,
+          1,
+          0,
+          0,
+          85,
+          0,
+          0,
+          0,
+          10
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          35,
+          0,
+          0,
+          0
+        ],
+        [
+          12,
+          0,
+          0,
+          0,
+          6,
+          17,
+          0,
+          85,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          6,
+          7,
+          0,
+          0,
+          0,
+          0,
+          78,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1,
+          97
+        ]
+      ]
+    },
+    "3": {
+      "accuracy": 0.8767567567567568,
+      "macro_precision": 0.8884927649107558,
+      "macro_recall": 0.8931441398989503,
+      "macro_f1": 0.8883145672957591,
+      "weighted_precision": 0.8828619702473812,
+      "weighted_recall": 0.8767567567567568,
+      "weighted_f1": 0.8771630070341481,
+      "per_class": {
+        "air_conditioner": {
+          "classID": 0,
+          "precision": 0.8791208791208791,
+          "recall": 0.8,
+          "f1": 0.837696335078534,
+          "support": 100
+        },
+        "car_horn": {
+          "classID": 1,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 43
+        },
+        "children_playing": {
+          "classID": 2,
+          "precision": 0.8482142857142857,
+          "recall": 0.95,
+          "f1": 0.8962264150943396,
+          "support": 100
+        },
+        "dog_bark": {
+          "classID": 3,
+          "precision": 0.92,
+          "recall": 0.92,
+          "f1": 0.92,
+          "support": 100
+        },
+        "drilling": {
+          "classID": 4,
+          "precision": 0.7372881355932204,
+          "recall": 0.87,
+          "f1": 0.7981651376146789,
+          "support": 100
+        },
+        "engine_idling": {
+          "classID": 5,
+          "precision": 0.9555555555555556,
+          "recall": 0.8037383177570093,
+          "f1": 0.8730964467005076,
+          "support": 107
+        },
+        "gun_shot": {
+          "classID": 6,
+          "precision": 0.9,
+          "recall": 1.0,
+          "f1": 0.9473684210526315,
+          "support": 36
+        },
+        "jackhammer": {
+          "classID": 7,
+          "precision": 0.8785046728971962,
+          "recall": 0.7833333333333333,
+          "f1": 0.8281938325991189,
+          "support": 120
+        },
+        "siren": {
+          "classID": 8,
+          "precision": 0.9734513274336283,
+          "recall": 0.9243697478991597,
+          "f1": 0.9482758620689655,
+          "support": 119
+        },
+        "street_music": {
+          "classID": 9,
+          "precision": 0.7927927927927928,
+          "recall": 0.88,
+          "f1": 0.8341232227488151,
+          "support": 100
+        }
+      },
+      "confusion_matrix": [
+        [
+          80,
+          0,
+          0,
+          7,
+          2,
+          0,
+          0,
+          0,
+          1,
+          10
+        ],
+        [
+          0,
+          43,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          95,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          3
+        ],
+        [
+          2,
+          0,
+          0,
+          92,
+          0,
+          0,
+          2,
+          0,
+          2,
+          2
+        ],
+        [
+          0,
+          0,
+          12,
+          0,
+          87,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          2,
+          0,
+          0,
+          0,
+          2,
+          86,
+          2,
+          13,
+          0,
+          2
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          36,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          26,
+          0,
+          0,
+          94,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          3,
+          0,
+          0,
+          110,
+          5
+        ],
+        [
+          6,
+          0,
+          5,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          88
+        ]
+      ]
+    },
+    "4": {
+      "accuracy": 0.8717171717171717,
+      "macro_precision": 0.8861961887277852,
+      "macro_recall": 0.8686904415916226,
+      "macro_f1": 0.8743402408529845,
+      "weighted_precision": 0.878638626794625,
+      "weighted_recall": 0.8717171717171717,
+      "weighted_f1": 0.8722611560561503,
+      "per_class": {
+        "air_conditioner": {
+          "classID": 0,
+          "precision": 0.9270833333333334,
+          "recall": 0.89,
+          "f1": 0.9081632653061225,
+          "support": 100
+        },
+        "car_horn": {
+          "classID": 1,
+          "precision": 0.9361702127659575,
+          "recall": 0.7457627118644068,
+          "f1": 0.8301886792452831,
+          "support": 59
+        },
+        "children_playing": {
+          "classID": 2,
+          "precision": 0.86,
+          "recall": 0.86,
+          "f1": 0.86,
+          "support": 100
+        },
+        "dog_bark": {
+          "classID": 3,
+          "precision": 0.8888888888888888,
+          "recall": 0.96,
+          "f1": 0.9230769230769231,
+          "support": 100
+        },
+        "drilling": {
+          "classID": 4,
+          "precision": 0.84,
+          "recall": 0.84,
+          "f1": 0.84,
+          "support": 100
+        },
+        "engine_idling": {
+          "classID": 5,
+          "precision": 0.8953488372093024,
+          "recall": 0.719626168224299,
+          "f1": 0.7979274611398963,
+          "support": 107
+        },
+        "gun_shot": {
+          "classID": 6,
+          "precision": 1.0,
+          "recall": 0.9736842105263158,
+          "f1": 0.9866666666666667,
+          "support": 38
+        },
+        "jackhammer": {
+          "classID": 7,
+          "precision": 0.6891891891891891,
+          "recall": 0.85,
+          "f1": 0.7611940298507462,
+          "support": 120
+        },
+        "siren": {
+          "classID": 8,
+          "precision": 0.9695121951219512,
+          "recall": 0.9578313253012049,
+          "f1": 0.9636363636363636,
+          "support": 166
+        },
+        "street_music": {
+          "classID": 9,
+          "precision": 0.8557692307692307,
+          "recall": 0.89,
+          "f1": 0.8725490196078431,
+          "support": 100
+        }
+      },
+      "confusion_matrix": [
+        [
+          89,
+          0,
+          0,
+          1,
+          10,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          44,
+          0,
+          0,
+          0,
+          0,
+          0,
+          10,
+          1,
+          4
+        ],
+        [
+          1,
+          0,
+          86,
+          10,
+          1,
+          0,
+          0,
+          0,
+          0,
+          2
+        ],
+        [
+          2,
+          0,
+          1,
+          96,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0
+        ],
+        [
+          3,
+          1,
+          1,
+          0,
+          84,
+          2,
+          0,
+          9,
+          0,
+          0
+        ],
+        [
+          1,
+          2,
+          0,
+          0,
+          0,
+          77,
+          0,
+          27,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          37,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          5,
+          4,
+          0,
+          102,
+          0,
+          9
+        ],
+        [
+          0,
+          0,
+          6,
+          0,
+          0,
+          1,
+          0,
+          0,
+          159,
+          0
+        ],
+        [
+          0,
+          0,
+          6,
+          0,
+          0,
+          2,
+          0,
+          0,
+          3,
+          89
+        ]
+      ]
+    },
+    "5": {
+      "accuracy": 0.9198717948717948,
+      "macro_precision": 0.9222674381638101,
+      "macro_recall": 0.9236809992129009,
+      "macro_f1": 0.9175530373517977,
+      "weighted_precision": 0.9260563956038427,
+      "weighted_recall": 0.9198717948717948,
+      "weighted_f1": 0.9176880250046529,
+      "per_class": {
+        "air_conditioner": {
+          "classID": 0,
+          "precision": 0.9253731343283582,
+          "recall": 0.62,
+          "f1": 0.7425149700598802,
+          "support": 100
+        },
+        "car_horn": {
+          "classID": 1,
+          "precision": 1.0,
+          "recall": 0.8877551020408163,
+          "f1": 0.9405405405405406,
+          "support": 98
+        },
+        "children_playing": {
+          "classID": 2,
+          "precision": 0.9479166666666666,
+          "recall": 0.91,
+          "f1": 0.9285714285714286,
+          "support": 100
+        },
+        "dog_bark": {
+          "classID": 3,
+          "precision": 0.9306930693069307,
+          "recall": 0.94,
+          "f1": 0.9353233830845771,
+          "support": 100
+        },
+        "drilling": {
+          "classID": 4,
+          "precision": 0.9134615384615384,
+          "recall": 0.95,
+          "f1": 0.9313725490196079,
+          "support": 100
+        },
+        "engine_idling": {
+          "classID": 5,
+          "precision": 0.9545454545454546,
+          "recall": 0.9813084112149533,
+          "f1": 0.967741935483871,
+          "support": 107
+        },
+        "gun_shot": {
+          "classID": 6,
+          "precision": 0.975609756097561,
+          "recall": 1.0,
+          "f1": 0.9876543209876543,
+          "support": 40
+        },
+        "jackhammer": {
+          "classID": 7,
+          "precision": 0.967741935483871,
+          "recall": 1.0,
+          "f1": 0.9836065573770492,
+          "support": 120
+        },
+        "siren": {
+          "classID": 8,
+          "precision": 0.723404255319149,
+          "recall": 0.9577464788732394,
+          "f1": 0.8242424242424242,
+          "support": 71
+        },
+        "street_music": {
+          "classID": 9,
+          "precision": 0.8839285714285714,
+          "recall": 0.99,
+          "f1": 0.9339622641509434,
+          "support": 100
+        }
+      },
+      "confusion_matrix": [
+        [
+          62,
+          0,
+          1,
+          4,
+          0,
+          4,
+          0,
+          2,
+          24,
+          3
+        ],
+        [
+          1,
+          87,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          2,
+          7
+        ],
+        [
+          0,
+          0,
+          91,
+          1,
+          5,
+          0,
+          0,
+          0,
+          0,
+          3
+        ],
+        [
+          1,
+          0,
+          2,
+          94,
+          2,
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          2,
+          0,
+          1,
+          0,
+          95,
+          1,
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          105,
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          40,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          120,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          2,
+          1,
+          0,
+          0,
+          0,
+          68,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          99
+        ]
+      ]
+    },
+    "6": {
+      "accuracy": 0.8140947752126367,
+      "macro_precision": 0.8304337525502786,
+      "macro_recall": 0.8271752097656441,
+      "macro_f1": 0.8171176591760553,
+      "weighted_precision": 0.8096175850682449,
+      "weighted_recall": 0.8140947752126367,
+      "weighted_f1": 0.800869747152739,
+      "per_class": {
+        "air_conditioner": {
+          "classID": 0,
+          "precision": 0.5441176470588235,
+          "recall": 0.37,
+          "f1": 0.44047619047619047,
+          "support": 100
+        },
+        "car_horn": {
+          "classID": 1,
+          "precision": 0.84375,
+          "recall": 0.9642857142857143,
+          "f1": 0.9,
+          "support": 28
+        },
+        "children_playing": {
+          "classID": 2,
+          "precision": 0.8392857142857143,
+          "recall": 0.94,
+          "f1": 0.8867924528301887,
+          "support": 100
+        },
+        "dog_bark": {
+          "classID": 3,
+          "precision": 0.8584070796460177,
+          "recall": 0.97,
+          "f1": 0.9107981220657277,
+          "support": 100
+        },
+        "drilling": {
+          "classID": 4,
+          "precision": 0.7461538461538462,
+          "recall": 0.97,
+          "f1": 0.8434782608695652,
+          "support": 100
+        },
+        "engine_idling": {
+          "classID": 5,
+          "precision": 0.7102803738317757,
+          "recall": 0.7102803738317757,
+          "f1": 0.7102803738317757,
+          "support": 107
+        },
+        "gun_shot": {
+          "classID": 6,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 46
+        },
+        "jackhammer": {
+          "classID": 7,
+          "precision": 0.9428571428571428,
+          "recall": 0.4852941176470588,
+          "f1": 0.6407766990291263,
+          "support": 68
+        },
+        "siren": {
+          "classID": 8,
+          "precision": 0.9295774647887324,
+          "recall": 0.8918918918918919,
+          "f1": 0.9103448275862069,
+          "support": 74
+        },
+        "street_music": {
+          "classID": 9,
+          "precision": 0.8899082568807339,
+          "recall": 0.97,
+          "f1": 0.9282296650717703,
+          "support": 100
+        }
+      },
+      "confusion_matrix": [
+        [
+          37,
+          0,
+          8,
+          15,
+          30,
+          3,
+          0,
+          0,
+          5,
+          2
+        ],
+        [
+          1,
+          27,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          3,
+          94,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          2
+        ],
+        [
+          0,
+          0,
+          1,
+          97,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          97,
+          0,
+          0,
+          2,
+          0,
+          0
+        ],
+        [
+          25,
+          0,
+          2,
+          0,
+          1,
+          76,
+          0,
+          0,
+          0,
+          3
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          46,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          2,
+          0,
+          0,
+          1,
+          28,
+          0,
+          33,
+          0,
+          3
+        ],
+        [
+          2,
+          0,
+          5,
+          0,
+          0,
+          0,
+          0,
+          0,
+          66,
+          1
+        ],
+        [
+          1,
+          0,
+          2,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          97
+        ]
+      ]
+    },
+    "7": {
+      "accuracy": 0.8651551312649165,
+      "macro_precision": 0.8634391141099925,
+      "macro_recall": 0.8702858690465443,
+      "macro_f1": 0.8569479696534904,
+      "weighted_precision": 0.8665787675865989,
+      "weighted_recall": 0.8651551312649165,
+      "weighted_f1": 0.8576942057756808,
+      "per_class": {
+        "air_conditioner": {
+          "classID": 0,
+          "precision": 0.7117117117117117,
+          "recall": 0.79,
+          "f1": 0.7488151658767772,
+          "support": 100
+        },
+        "car_horn": {
+          "classID": 1,
+          "precision": 0.7368421052631579,
+          "recall": 1.0,
+          "f1": 0.8484848484848485,
+          "support": 28
+        },
+        "children_playing": {
+          "classID": 2,
+          "precision": 1.0,
+          "recall": 0.95,
+          "f1": 0.9743589743589743,
+          "support": 100
+        },
+        "dog_bark": {
+          "classID": 3,
+          "precision": 0.94,
+          "recall": 0.94,
+          "f1": 0.94,
+          "support": 100
+        },
+        "drilling": {
+          "classID": 4,
+          "precision": 0.8016528925619835,
+          "recall": 0.97,
+          "f1": 0.8778280542986425,
+          "support": 100
+        },
+        "engine_idling": {
+          "classID": 5,
+          "precision": 0.7818181818181819,
+          "recall": 0.8113207547169812,
+          "f1": 0.7962962962962963,
+          "support": 106
+        },
+        "gun_shot": {
+          "classID": 6,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 51
+        },
+        "jackhammer": {
+          "classID": 7,
+          "precision": 0.7567567567567568,
+          "recall": 0.3684210526315789,
+          "f1": 0.49557522123893805,
+          "support": 76
+        },
+        "siren": {
+          "classID": 8,
+          "precision": 0.9444444444444444,
+          "recall": 0.8831168831168831,
+          "f1": 0.912751677852349,
+          "support": 77
+        },
+        "street_music": {
+          "classID": 9,
+          "precision": 0.9611650485436893,
+          "recall": 0.99,
+          "f1": 0.9753694581280788,
+          "support": 100
+        }
+      },
+      "confusion_matrix": [
+        [
+          79,
+          0,
+          0,
+          5,
+          2,
+          6,
+          0,
+          8,
+          0,
+          0
+        ],
+        [
+          0,
+          28,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          95,
+          1,
+          0,
+          1,
+          0,
+          0,
+          2,
+          1
+        ],
+        [
+          3,
+          0,
+          0,
+          94,
+          1,
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          97,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          16,
+          2,
+          0,
+          0,
+          0,
+          86,
+          0,
+          1,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          51,
+          0,
+          0,
+          0
+        ],
+        [
+          11,
+          0,
+          0,
+          0,
+          21,
+          16,
+          0,
+          28,
+          0,
+          0
+        ],
+        [
+          0,
+          8,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          68,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          99
+        ]
+      ]
+    },
+    "8": {
+      "accuracy": 0.8821339950372209,
+      "macro_precision": 0.9056200219788598,
+      "macro_recall": 0.898555944055944,
+      "macro_f1": 0.8965899127410057,
+      "weighted_precision": 0.8937065775532957,
+      "weighted_recall": 0.8821339950372209,
+      "weighted_f1": 0.8811516440763624,
+      "per_class": {
+        "air_conditioner": {
+          "classID": 0,
+          "precision": 0.8985507246376812,
+          "recall": 0.62,
+          "f1": 0.7337278106508875,
+          "support": 100
+        },
+        "car_horn": {
+          "classID": 1,
+          "precision": 0.9354838709677419,
+          "recall": 0.9666666666666667,
+          "f1": 0.9508196721311475,
+          "support": 30
+        },
+        "children_playing": {
+          "classID": 2,
+          "precision": 0.9529411764705882,
+          "recall": 0.81,
+          "f1": 0.8756756756756757,
+          "support": 100
+        },
+        "dog_bark": {
+          "classID": 3,
+          "precision": 0.9693877551020408,
+          "recall": 0.95,
+          "f1": 0.9595959595959596,
+          "support": 100
+        },
+        "drilling": {
+          "classID": 4,
+          "precision": 0.8461538461538461,
+          "recall": 0.99,
+          "f1": 0.9124423963133641,
+          "support": 100
+        },
+        "engine_idling": {
+          "classID": 5,
+          "precision": 0.9382716049382716,
+          "recall": 0.8636363636363636,
+          "f1": 0.8994082840236687,
+          "support": 88
+        },
+        "gun_shot": {
+          "classID": 6,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 30
+        },
+        "jackhammer": {
+          "classID": 7,
+          "precision": 0.8875,
+          "recall": 0.9102564102564102,
+          "f1": 0.8987341772151899,
+          "support": 78
+        },
+        "siren": {
+          "classID": 8,
+          "precision": 0.9512195121951219,
+          "recall": 0.975,
+          "f1": 0.9629629629629629,
+          "support": 80
+        },
+        "street_music": {
+          "classID": 9,
+          "precision": 0.6766917293233082,
+          "recall": 0.9,
+          "f1": 0.7725321888412017,
+          "support": 100
+        }
+      },
+      "confusion_matrix": [
+        [
+          62,
+          0,
+          1,
+          0,
+          7,
+          1,
+          0,
+          0,
+          0,
+          29
+        ],
+        [
+          0,
+          29,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          2,
+          0,
+          81,
+          2,
+          0,
+          2,
+          0,
+          0,
+          2,
+          11
+        ],
+        [
+          3,
+          0,
+          0,
+          95,
+          0,
+          0,
+          0,
+          0,
+          2,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          99,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          1,
+          0,
+          2,
+          76,
+          0,
+          5,
+          0,
+          2
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          30,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          7,
+          0,
+          0,
+          71,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          78,
+          0
+        ],
+        [
+          0,
+          0,
+          2,
+          0,
+          2,
+          2,
+          0,
+          4,
+          0,
+          90
+        ]
+      ]
+    },
+    "9": {
+      "accuracy": 0.8737745098039216,
+      "macro_precision": 0.8930458724685382,
+      "macro_recall": 0.8952162236229103,
+      "macro_f1": 0.885249663514168,
+      "weighted_precision": 0.8833486999205942,
+      "weighted_recall": 0.8737745098039216,
+      "weighted_f1": 0.8681128272052527,
+      "per_class": {
+        "air_conditioner": {
+          "classID": 0,
+          "precision": 0.8360655737704918,
+          "recall": 0.51,
+          "f1": 0.6335403726708074,
+          "support": 100
+        },
+        "car_horn": {
+          "classID": 1,
+          "precision": 0.9142857142857143,
+          "recall": 1.0,
+          "f1": 0.9552238805970149,
+          "support": 32
+        },
+        "children_playing": {
+          "classID": 2,
+          "precision": 1.0,
+          "recall": 0.95,
+          "f1": 0.9743589743589743,
+          "support": 100
+        },
+        "dog_bark": {
+          "classID": 3,
+          "precision": 0.7913043478260869,
+          "recall": 0.91,
+          "f1": 0.8465116279069768,
+          "support": 100
+        },
+        "drilling": {
+          "classID": 4,
+          "precision": 0.9459459459459459,
+          "recall": 0.7,
+          "f1": 0.8045977011494253,
+          "support": 100
+        },
+        "engine_idling": {
+          "classID": 5,
+          "precision": 0.9666666666666667,
+          "recall": 0.9775280898876404,
+          "f1": 0.9720670391061452,
+          "support": 89
+        },
+        "gun_shot": {
+          "classID": 6,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 31
+        },
+        "jackhammer": {
+          "classID": 7,
+          "precision": 0.7142857142857143,
+          "recall": 0.9146341463414634,
+          "f1": 0.8021390374331551,
+          "support": 82
+        },
+        "siren": {
+          "classID": 8,
+          "precision": 0.9761904761904762,
+          "recall": 1.0,
+          "f1": 0.9879518072289156,
+          "support": 82
+        },
+        "street_music": {
+          "classID": 9,
+          "precision": 0.7857142857142857,
+          "recall": 0.99,
+          "f1": 0.8761061946902655,
+          "support": 100
+        }
+      },
+      "confusion_matrix": [
+        [
+          51,
+          0,
+          0,
+          22,
+          0,
+          0,
+          0,
+          0,
+          0,
+          27
+        ],
+        [
+          0,
+          32,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          95,
+          2,
+          0,
+          2,
+          0,
+          0,
+          1,
+          0
+        ],
+        [
+          8,
+          1,
+          0,
+          91,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          70,
+          0,
+          0,
+          30,
+          0,
+          0
+        ],
+        [
+          0,
+          2,
+          0,
+          0,
+          0,
+          87,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          31,
+          0,
+          0,
+          0
+        ],
+        [
+          2,
+          0,
+          0,
+          0,
+          4,
+          1,
+          0,
+          75,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          82,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          99
+        ]
+      ]
+    },
+    "10": {
+      "accuracy": 0.8972520908004779,
+      "macro_precision": 0.915644906742156,
+      "macro_recall": 0.9031429339057109,
+      "macro_f1": 0.9037851336915415,
+      "weighted_precision": 0.905166460257768,
+      "weighted_recall": 0.8972520908004779,
+      "weighted_f1": 0.8953212636163493,
+      "per_class": {
+        "air_conditioner": {
+          "classID": 0,
+          "precision": 0.845360824742268,
+          "recall": 0.82,
+          "f1": 0.8324873096446701,
+          "support": 100
+        },
+        "car_horn": {
+          "classID": 1,
+          "precision": 0.9393939393939394,
+          "recall": 0.9393939393939394,
+          "f1": 0.9393939393939394,
+          "support": 33
+        },
+        "children_playing": {
+          "classID": 2,
+          "precision": 0.8584070796460177,
+          "recall": 0.97,
+          "f1": 0.9107981220657277,
+          "support": 100
+        },
+        "dog_bark": {
+          "classID": 3,
+          "precision": 0.7868852459016393,
+          "recall": 0.96,
+          "f1": 0.8648648648648649,
+          "support": 100
+        },
+        "drilling": {
+          "classID": 4,
+          "precision": 0.9662921348314607,
+          "recall": 0.86,
+          "f1": 0.91005291005291,
+          "support": 100
+        },
+        "engine_idling": {
+          "classID": 5,
+          "precision": 0.8865979381443299,
+          "recall": 0.9247311827956989,
+          "f1": 0.9052631578947369,
+          "support": 93
+        },
+        "gun_shot": {
+          "classID": 6,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 32
+        },
+        "jackhammer": {
+          "classID": 7,
+          "precision": 0.96875,
+          "recall": 0.96875,
+          "f1": 0.96875,
+          "support": 96
+        },
+        "siren": {
+          "classID": 8,
+          "precision": 1.0,
+          "recall": 0.6385542168674698,
+          "f1": 0.7794117647058824,
+          "support": 83
+        },
+        "street_music": {
+          "classID": 9,
+          "precision": 0.9047619047619048,
+          "recall": 0.95,
+          "f1": 0.926829268292683,
+          "support": 100
+        }
+      },
+      "confusion_matrix": [
+        [
+          82,
+          0,
+          7,
+          0,
+          1,
+          10,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          2,
+          31,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          97,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          2
+        ],
+        [
+          0,
+          0,
+          0,
+          96,
+          0,
+          0,
+          0,
+          0,
+          0,
+          4
+        ],
+        [
+          4,
+          0,
+          6,
+          0,
+          86,
+          0,
+          0,
+          1,
+          0,
+          3
+        ],
+        [
+          5,
+          0,
+          0,
+          0,
+          0,
+          86,
+          0,
+          2,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          32,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          2,
+          1,
+          0,
+          93,
+          0,
+          0
+        ],
+        [
+          4,
+          0,
+          0,
+          25,
+          0,
+          0,
+          0,
+          0,
+          53,
+          1
+        ],
+        [
+          0,
+          2,
+          3,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          95
+        ]
+      ]
+    }
+  },
+  "fold_mean_std": {
+    "accuracy": {
+      "mean": 0.8738008942099057,
+      "std": 0.0274421180100146
+    },
+    "macro_precision": {
+      "mean": 0.8891499395952195,
+      "std": 0.025410395402188944
+    },
+    "macro_recall": {
+      "mean": 0.8848832237290705,
+      "std": 0.025874613571213848
+    },
+    "macro_f1": {
+      "mean": 0.8807411755025181,
+      "std": 0.027421209335692573
+    },
+    "weighted_precision": {
+      "mean": 0.8802263848373105,
+      "std": 0.02922162726446125
+    },
+    "weighted_recall": {
+      "mean": 0.8738008942099057,
+      "std": 0.0274421180100146
+    },
+    "weighted_f1": {
+      "mean": 0.8705082921341525,
+      "std": 0.03013903907230567
+    }
+  },
+  "pooled": {
+    "accuracy": 0.8743701328447091,
+    "macro_precision": 0.8853476013595746,
+    "macro_recall": 0.8845888589512599,
+    "macro_f1": 0.8835920181284532,
+    "weighted_precision": 0.8744590395031494,
+    "weighted_recall": 0.8743701328447091,
+    "weighted_f1": 0.8728495027598677,
+    "per_class": {
+      "air_conditioner": {
+        "classID": 0,
+        "precision": 0.8209658421672555,
+        "recall": 0.697,
+        "f1": 0.7539210383991347,
+        "support": 1000
+      },
+      "car_horn": {
+        "classID": 1,
+        "precision": 0.9333333333333333,
+        "recall": 0.9137529137529138,
+        "f1": 0.9234393404004712,
+        "support": 429
+      },
+      "children_playing": {
+        "classID": 2,
+        "precision": 0.9169139465875371,
+        "recall": 0.927,
+        "f1": 0.921929388363998,
+        "support": 1000
+      },
+      "dog_bark": {
+        "classID": 3,
+        "precision": 0.870201096892139,
+        "recall": 0.952,
+        "f1": 0.9092645654250239,
+        "support": 1000
+      },
+      "drilling": {
+        "classID": 4,
+        "precision": 0.8113553113553114,
+        "recall": 0.886,
+        "f1": 0.847036328871893,
+        "support": 1000
+      },
+      "engine_idling": {
+        "classID": 5,
+        "precision": 0.8760504201680672,
+        "recall": 0.834,
+        "f1": 0.8545081967213115,
+        "support": 1000
+      },
+      "gun_shot": {
+        "classID": 6,
+        "precision": 0.9867724867724867,
+        "recall": 0.9973262032085561,
+        "f1": 0.9920212765957447,
+        "support": 374
+      },
+      "jackhammer": {
+        "classID": 7,
+        "precision": 0.8454842219804135,
+        "recall": 0.777,
+        "f1": 0.8097967691505993,
+        "support": 1000
+      },
+      "siren": {
+        "classID": 8,
+        "precision": 0.9443207126948775,
+        "recall": 0.9128094725511302,
+        "f1": 0.9282977558839628,
+        "support": 929
+      },
+      "street_music": {
+        "classID": 9,
+        "precision": 0.8480786416443253,
+        "recall": 0.949,
+        "f1": 0.8957055214723927,
+        "support": 1000
+      }
+    },
+    "confusion_matrix": [
+      [
+        697,
+        3,
+        17,
+        87,
+        53,
+        29,
+        0,
+        10,
+        30,
+        74
+      ],
+      [
+        6,
+        392,
+        0,
+        0,
+        4,
+        0,
+        0,
+        12,
+        3,
+        12
+      ],
+      [
+        3,
+        3,
+        927,
+        19,
+        7,
+        5,
+        0,
+        0,
+        5,
+        31
+      ],
+      [
+        20,
+        1,
+        6,
+        952,
+        4,
+        0,
+        3,
+        0,
+        6,
+        8
+      ],
+      [
+        18,
+        1,
+        20,
+        1,
+        886,
+        6,
+        0,
+        60,
+        0,
+        8
+      ],
+      [
+        63,
+        7,
+        4,
+        0,
+        20,
+        834,
+        2,
+        52,
+        1,
+        17
+      ],
+      [
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        373,
+        0,
+        0,
+        0
+      ],
+      [
+        26,
+        2,
+        0,
+        0,
+        114,
+        69,
+        0,
+        777,
+        0,
+        12
+      ],
+      [
+        8,
+        9,
+        17,
+        34,
+        1,
+        4,
+        0,
+        0,
+        848,
+        8
+      ],
+      [
+        8,
+        2,
+        20,
+        0,
+        3,
+        5,
+        0,
+        8,
+        5,
+        949
+      ]
+    ]
+  }
+}

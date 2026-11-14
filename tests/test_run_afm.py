@@ -46,6 +46,15 @@ class SchedulerSafetyTests(unittest.TestCase):
              patch.object(af.socket, 'gethostname', return_value='gpu01.cluster'):
             af.require_slurm()
 
+    def test_missing_git_does_not_abort_provenance(self):
+        with patch.dict(os.environ, {}, clear=True), \
+             patch.object(af.subprocess, 'run', side_effect=FileNotFoundError('git')):
+            self.assertEqual(af.git_output(Path('.'), 'rev-parse', 'HEAD'), 'unknown')
+            self.assertEqual(af.git_output(Path('.'), 'status', '--porcelain'), 'unknown')
+        with patch.dict(os.environ, {'AFM_GIT_REVISION': 'abc123'}, clear=True), \
+             patch.object(af.subprocess, 'run', side_effect=FileNotFoundError('git')):
+            self.assertEqual(af.git_output(Path('.'), 'rev-parse', 'HEAD'), 'abc123')
+
     def test_thread_settings_follow_allocation(self):
         with patch.dict(os.environ, {'SLURM_CPUS_PER_TASK': '2'}, clear=True):
             af.configure_threads()

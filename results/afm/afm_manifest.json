@@ -1,0 +1,192 @@
+{
+  "provenance": {
+    "models": {
+      "clap": "630k-audioset-best.pt",
+      "beats": "BEATs_iter3_plus_AS2M.pt"
+    },
+    "checkpoint_sha256": {
+      "630k-audioset-best.pt": "8053c9775516af2f4902e1e8281e356cc1bf7a85e8b761908170767b77c3f037",
+      "BEATs_iter3_plus_AS2M.pt": "d43cbfad4d7b56381c061d7a24774f908d4d94c72961f6eb1d9090ff18cd8d34"
+    },
+    "beats_source_revision": "31c5b904ca1bf2afb4c234a6675c683a4e5fc7cd",
+    "preprocessing": {
+      "clap": {
+        "sample_rate": 48000,
+        "mono": true,
+        "samples": 480000,
+        "length_policy": "floor-repeat then zero-pad short; truncate-long"
+      },
+      "beats": {
+        "sample_rate": 16000,
+        "mono": true,
+        "pooling": "mean over valid temporal frames",
+        "minimum_samples": 3200,
+        "short_policy": "zero-pad to 200ms, mask padded samples"
+      }
+    },
+    "cache": "features/afm/afm_features.npz",
+    "cache_hit": true,
+    "signature": {
+      "metadata_sha256": "186536c150792b275065a678789df4b005c262ed3e3a7deddd535d41c691c3a5",
+      "audio_sha256": "284a3887f6dea146e54bee5ff655748d7886b02f527f4a32fcfda470a90f5cb0",
+      "checkpoints": {
+        "630k-audioset-best.pt": "8053c9775516af2f4902e1e8281e356cc1bf7a85e8b761908170767b77c3f037",
+        "BEATs_iter3_plus_AS2M.pt": "d43cbfad4d7b56381c061d7a24774f908d4d94c72961f6eb1d9090ff18cd8d34"
+      },
+      "beats_source_revision": "31c5b904ca1bf2afb4c234a6675c683a4e5fc7cd",
+      "beats_source_sha256": {
+        "BEATs.py": "27f289db7c56ce26f2ceb50d3719854b91b2dec1c2830d8b1dd8de1bbee19eeb",
+        "backbone.py": "31c0378379a7e0f1d1069f9da444fb86890fe1ea078959a2dcd39640cdcadbaa",
+        "modules.py": "edeb6b6cd6a784da749f932c3e0783c0bce556fc768d0d23a4d53d4b819eb424"
+      },
+      "laion_clap_version": "1.1.7",
+      "laion_clap_source_sha256": {
+        "__init__.py": "17fff02fa6188d8984527bf71a1c9723233f9236aa8d7535cab3995f60d05bd6",
+        "clap_module/__init__.py": "451e225fe2fcba83d7f098ffc156292acd408eae7222cad3140f2656b123f934",
+        "clap_module/bert.py": "46bc33be0090bd7f1dc4dd02a9856559ed4fef6f5d2b51640240ad78351eeacb",
+        "clap_module/factory.py": "ec14ffdc0ea37171e45b7697091e026136020c2ddb0aa07f0e29eb2e58b5d56c",
+        "clap_module/feature_fusion.py": "878c98e926e0c734e469c7cf9419cf0bd98af9b0f224f66f04cabc2b3bad6a9f",
+        "clap_module/htsat.py": "25b817819fd90d27dd5a2539750e984c55b394cc3c000b0eba20f4b3723a74eb",
+        "clap_module/linear_probe.py": "e8ef89ef622b76c9e560d0bac6c733702fc6dbe3e8e8c71057507a8d20810cde",
+        "clap_module/loss.py": "c2be8cdd6f148d5526bdbc27350ebbcfa21e269961bf592f637c992840ac214c",
+        "clap_module/model.py": "1b3639cddc977cf304b9c64e359dacf2dfaab49f91c4209bd9d29f6268222ec4",
+        "clap_module/openai.py": "b90a36c71a4030ede666db4a2e394e1cecd87ef303f9486989f3125a9e5f5330",
+        "clap_module/pann_model.py": "52a4fda51030a3669803ed3d8fccf03d7509ab124d922e32cb620e05e74b23e8",
+        "clap_module/pretrained.py": "cb6dd462d6e219b8052adf7271198805c808b14244a62eac542018e1fdfb5dac",
+        "clap_module/timm_model.py": "0ebbf6c6533390be7651c5951c7474f5910f54f914d40d6c880af7e74029e3f9",
+        "clap_module/tokenizer.py": "badc1e522a939e145faab2aea60c5d0a015761e69175ace432dfb3fc31ecb896",
+        "clap_module/transform.py": "057de43fa5732f1328913629352d7d0b00db8a7c0e021b2aa88bbfab06b8638a",
+        "clap_module/utils.py": "399cd0e8c20998a1aa8db9ae3fec3f949e07e0296b675c4917f9cfcfc9816ed0",
+        "clap_module/version.py": "3e6710d8f236a0ff22ae72ed24b25bcb661f5bab01bcb0262fe569001cd3ab07",
+        "evaluate/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "evaluate/eval_dcase.py": "7eca60b0f9dfe4c26d818ce887f6b5a3db132bba9ac830a0e048e9382724a8fb",
+        "evaluate/eval_linear_probe.py": "239b6e627069bae6bc41b350bdd741413b99d8d232c57e2c860d56065c81978b",
+        "evaluate/eval_retrieval.py": "0f72cf12baf7506af172a2f36b3a10ab7fccaa9cf86f790c93f6d3a5403c4adb",
+        "evaluate/eval_retrieval_main.py": "d22806ca61df376388e3d5458cc665d2661f2a824c193b02cd47bbcfea7abe93",
+        "evaluate/eval_zeroshot_classification.py": "7296ce460e246fb16df2a76637d3fd6c9ed6ddb65840c697a722f8c71ec99205",
+        "hook.py": "a9001b213768528d667589e6dd4d7f92f107943a5e1ce3149ee6de1a520f9c15",
+        "training/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "training/data.py": "b958fc34aa9cac44103b663374c3c49aee4580dec8740b9dd1e17054c8c6e5dc",
+        "training/distributed.py": "1121264df45a9428f8d1510285b6a1e47d5e15df390f73594d8727dbb0a4c116",
+        "training/imagenet_zeroshot_data.py": "bcd4d3f055783951a205782f94cc9aff73a4f2d457d30f96c3f26cbd1ad08e1b",
+        "training/infer_demo.py": "740638fab727ad2ff8090214e00ae47df544595c451cc8e6e1031e1cdad2dacd",
+        "training/logger.py": "d90ffad0a42e9d8f1b15af6a0db819e178d6a880f8203c6a51368856cd26f3ee",
+        "training/lp_main.py": "3d408f186b70d17d1743dfe9acd8de503eb9bffde2abaff50110084b205df121",
+        "training/lp_train.py": "9c5b92a22a78554f9c55035b2d677b71345ec8cdf671a7d2cc4badd4a0f60048",
+        "training/main.py": "1859c7e28df05a94c458550882bb03a2c2d324391efd41bb71cd5fac407efebb",
+        "training/params.py": "ec272ce3a0be09ad8ffd7bc903a215c7ebc9b7b10d7611ce0e5e74b11e4053ea",
+        "training/scheduler.py": "77767a9af54c1e90c38404e334b6f660254204a84aa1f0a6a199bbda1765141c",
+        "training/train.py": "37e17bc7b17afc0d1ca86f45b61521f480f0d93385c2a610206a9aec3174dc15",
+        "training/zero_shot.py": "530ec5bcf10a11cbd66ee56178f7381d0a0e9d5fdde27fe4f70891abcff3a728",
+        "unit_test.py": "62c65330b490a97eb28902ce88f2dfb4fa01918abdc63e5522dd14842eb6df5c"
+      },
+      "preprocessing": {
+        "clap": {
+          "sample_rate": 48000,
+          "mono": true,
+          "samples": 480000,
+          "length_policy": "floor-repeat then zero-pad short; truncate-long"
+        },
+        "beats": {
+          "sample_rate": 16000,
+          "mono": true,
+          "pooling": "mean over valid temporal frames",
+          "minimum_samples": 3200,
+          "short_policy": "zero-pad to 200ms, mask padded samples"
+        }
+      },
+      "extractor_sha256": "fb7c57c09cff4797fdc20c58ba76b43061dc4aff052abd85633f487e1f19a453",
+      "dependency_versions": {
+        "torch": "2.6.0",
+        "torchaudio": "2.6.0",
+        "librosa": "0.11.0",
+        "numpy": "1.26.4"
+      },
+      "smoke_limit": null
+    },
+    "text": {
+      "model": "630k-audioset-best.pt",
+      "checkpoint_sha256": "8053c9775516af2f4902e1e8281e356cc1bf7a85e8b761908170767b77c3f037",
+      "prompts": [
+        "An audio recording of an air conditioner running.",
+        "An audio recording of a car horn honking.",
+        "An audio recording of children playing.",
+        "An audio recording of a dog barking.",
+        "An audio recording of drilling.",
+        "An audio recording of an engine idling.",
+        "An audio recording of a gunshot.",
+        "An audio recording of a jackhammer operating.",
+        "An audio recording of a siren sounding.",
+        "An audio recording of street music."
+      ],
+      "classes": [
+        "air_conditioner",
+        "car_horn",
+        "children_playing",
+        "dog_bark",
+        "drilling",
+        "engine_idling",
+        "gun_shot",
+        "jackhammer",
+        "siren",
+        "street_music"
+      ]
+    },
+    "run": {
+      "git_revision": "dbbf9c125370442654ac2bc8db11881892f954d0",
+      "working_tree_status": "unknown",
+      "source_sha256": {
+        "run_afm.py": "060b0889261fcf1348f6ed3883fb551cae363e05b54893dd2fa697e8525c92ca",
+        "afm_evaluate.py": "a01d16cd8b71e1742334f78856d1b65989b8c573c8f5ca4446df4ad47ecb71d4",
+        "afm_features.py": "fb7c57c09cff4797fdc20c58ba76b43061dc4aff052abd85633f487e1f19a453"
+      },
+      "versions": {
+        "python": "3.12.10",
+        "numpy": "1.26.4",
+        "pandas": "2.2.3",
+        "scikit-learn": "1.9.1",
+        "torch": "2.6.0",
+        "torchaudio": "2.6.0",
+        "laion-clap": "1.1.7",
+        "librosa": "0.11.0"
+      },
+      "seed": 122333,
+      "epochs_max": 100,
+      "batch_size": 64,
+      "device": "cuda",
+      "svm": {
+        "C": 10,
+        "kernel": "rbf",
+        "gamma": "scale"
+      },
+      "mlp": {
+        "hidden_dim": 256,
+        "dropout": 0.3,
+        "optimizer": "Adam",
+        "learning_rate": 0.001,
+        "patience": 10,
+        "validation": "next official fold cyclically; fresh scaler/model refit all nine training folds"
+      }
+    }
+  },
+  "models": [
+    "clap_zero_shot",
+    "clap_svm",
+    "clap_mlp",
+    "beats_svm",
+    "beats_mlp",
+    "fused_svm",
+    "fused_mlp",
+    "baselines"
+  ],
+  "baselines": {
+    "svm": {
+      "status": "unavailable",
+      "reason": "metrics manifest missing"
+    },
+    "cnn": {
+      "status": "unavailable",
+      "reason": "metrics manifest missing"
+    }
+  }
+}
