@@ -17,6 +17,7 @@ from sklearn.svm import SVC
 FEATURES_PATH = pathlib.Path("features/mfcc_features.csv")
 MODEL_PATH = pathlib.Path("models/svm_model.joblib")
 CONFUSION_MATRIX_PATH = pathlib.Path("models/confusion_matrix.png")
+RESULTS_PATH = pathlib.Path("models/results.txt")
 
 
 def load_features():
@@ -52,11 +53,23 @@ def main() -> None:
         all_true.extend(y_test)
         all_pred.extend(y_pred)
 
-    print(f"\nMean 10-fold accuracy: {np.mean(fold_accuracies):.4f} (+/- {np.std(fold_accuracies):.4f})")
+    mean_acc, std_acc = np.mean(fold_accuracies), np.std(fold_accuracies)
+    report = classification_report(all_true, all_pred)
+
+    print(f"\nMean 10-fold accuracy: {mean_acc:.4f} (+/- {std_acc:.4f})")
     print("\nOverall classification report:")
-    print(classification_report(all_true, all_pred))
+    print(report)
 
     MODEL_PATH.parent.mkdir(parents=True, exist_ok=True)
+
+    with open(RESULTS_PATH, "w") as f:
+        f.write("Per-fold accuracy:\n")
+        for fold, acc in zip(sorted(df["fold"].unique()), fold_accuracies):
+            f.write(f"Fold {fold}: accuracy = {acc:.4f}\n")
+        f.write(f"\nMean 10-fold accuracy: {mean_acc:.4f} (+/- {std_acc:.4f})\n")
+        f.write("\nOverall classification report:\n")
+        f.write(report)
+    print(f"Saved results to {RESULTS_PATH}")
     final_pipeline = Pipeline([
         ("scaler", StandardScaler()),
         ("svm", SVC(kernel="rbf", C=10, gamma="scale")),

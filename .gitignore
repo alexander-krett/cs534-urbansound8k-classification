@@ -18,6 +18,18 @@ features/*.csv
 models/*.joblib
 models/*.pkl
 
+# BEATs experiment (kept separate from the MFCC+SVM baseline above)
+beats_experiment/features/*.csv
+beats_experiment/models/*.joblib
+beats_experiment/models/checkpoints/
+
+# CLAP experiment (kept separate from the MFCC+SVM baseline above)
+clap_experiment/features/*.csv
+clap_experiment/models/*.joblib
+
+# Pretrained checkpoints (large, downloaded separately)
+*.pt
+
 # Jupyter
 .ipynb_checkpoints/
 
