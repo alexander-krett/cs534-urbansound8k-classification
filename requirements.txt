@@ -4,7 +4,4 @@ scikit-learn
 librosa
 soundfile
 matplotlib
-seaborn
-tqdm
-joblib
 torch

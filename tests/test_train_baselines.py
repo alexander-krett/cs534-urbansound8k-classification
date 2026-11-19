@@ -35,36 +35,28 @@ class BaselineSmokeTests(unittest.TestCase):
                              "classID": class_id, "class": label})
         pd.DataFrame(rows).to_csv(meta / "UrbanSound8K.csv", index=False)
 
-    def run_cli(self, root: Path, model: str) -> dict:
+    def run_cli(self, root):
         data = root / "data" / "UrbanSound8K"
         output = root / "out"
-        cache = root / f"{model}.npz"
+        cache = root / "cnn.npz"
         env = dict(os.environ, MPLBACKEND="Agg")
         result = subprocess.run([
             sys.executable, str(ROOT / "src" / "train_baselines.py"),
-            "--model", model, "--data-dir", str(data), "--output-dir", str(output),
+            "--model", "cnn", "--data-dir", str(data), "--output-dir", str(output),
             "--cache", str(cache), "--folds", "1", "--epochs", "1",
             "--batch-size", "2", "--seed", "122333",
         ], cwd=ROOT, env=env, text=True, capture_output=True, timeout=180)
         self.assertEqual(result.returncode, 0, msg=result.stdout + "\n" + result.stderr)
-        metrics = json.loads((output / f"{model}_metrics.json").read_text())
+        metrics = json.loads((output / "cnn_metrics.json").read_text())
         self.assertEqual(list(metrics["folds"]), ["1"])
         self.assertEqual(len(metrics["pooled"]["confusion_matrix"]), 2)
-        self.assertTrue((output / f"{model}_predictions.csv").exists())
-        predictions = pd.read_csv(output / f"{model}_predictions.csv")
+        self.assertTrue((output / "cnn_predictions.csv").exists())
+        predictions = pd.read_csv(output / "cnn_predictions.csv")
         self.assertTrue(predictions["slice_file_name"].is_unique)
         self.assertTrue((predictions["fold"] == 1).all())
-        extension = "pt" if model == "cnn" else "joblib"
-        self.assertTrue((output / f"{model}_fold1.{extension}").exists())
+        self.assertTrue((output / "cnn_fold1.pt").exists())
+        self.assertTrue((output / "cnn_confusion_matrix.png").exists())
         return metrics
-
-    def test_svm_synthetic_dataset_cli(self):
-        with tempfile.TemporaryDirectory() as temporary:
-            root = Path(temporary)
-            self.make_dataset(root)
-            report = self.run_cli(root, "svm")
-            self.assertIn("accuracy", report["fold_mean_std"])
-            self.assertIn("macro_f1", report["pooled"])
 
     def test_cnn_synthetic_dataset_cli(self):
         try:
@@ -74,7 +66,7 @@ class BaselineSmokeTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as temporary:
             root = Path(temporary)
             self.make_dataset(root)
-            report = self.run_cli(root, "cnn")
+            report = self.run_cli(root)
             self.assertEqual(report["config"]["seed"], 122333)
             self.assertTrue(report["folds"]["1"]["selected_epochs"] >= 1)
 
@@ -83,27 +75,6 @@ class BaselineSmokeTests(unittest.TestCase):
                                    np.array(["b", "b", "a"]), ["b", "a"])
         self.assertEqual(list(result["per_class"]), ["b", "a"])
         self.assertEqual(result["confusion_matrix"], [[1, 0], [1, 1]])
-
-    def test_svm_pipeline_fits_only_non_test_fold_rows(self):
-        X = np.arange(12, dtype=np.float32).reshape(6, 2)
-        y = np.array(["a", "b", "a", "b", "a", "b"])
-        folds = np.array([1, 1, 2, 2, 3, 3])
-        captured = {}
-        class SpyPipeline:
-            def fit(self, x, target):
-                captured["X"] = x.copy()
-                captured["y"] = target.copy()
-            def predict(self, x):
-                return np.array(["a", "b"])
-        def make_spy(*steps):
-            captured["steps"] = steps
-            return SpyPipeline()
-        with mock.patch.object(baselines, "make_pipeline", side_effect=make_spy), \
-             mock.patch.object(baselines, "yield_artifact"):
-            baselines.evaluate_arrays(X, y, folds, ["a", "b"], selected_folds=[2])
-        np.testing.assert_array_equal(captured["X"], X[folds != 2])
-        np.testing.assert_array_equal(captured["y"], y[folds != 2])
-        self.assertIsInstance(captured["steps"][0], baselines.StandardScaler)
 
     def test_logmel_silence_and_short_clip_have_fixed_shape_and_range(self):
         with tempfile.TemporaryDirectory() as temporary:
@@ -130,16 +101,16 @@ class BaselineSmokeTests(unittest.TestCase):
             file.write_bytes(b"one")
             pd.DataFrame([{"fold": 1, "slice_file_name": "a.wav", "class": "a", "classID": 0}]
                          ).to_csv(metadata / "UrbanSound8K.csv", index=False)
-            cache = root / "mfcc.npz"
-            with mock.patch.object(baselines, "mfcc_vector", return_value=np.ones(80, np.float32)) as extract:
-                baselines.load_or_create_data(root, "svm", cache)
-                baselines.load_or_create_data(root, "svm", cache)
+            cache = root / "cnn.npz"
+            with mock.patch.object(baselines, "logmel_image", return_value=np.ones((64, 173), np.float32)) as extract:
+                baselines.load_or_create_data(root, cache)
+                baselines.load_or_create_data(root, cache)
                 self.assertEqual(extract.call_count, 1)
                 file.write_bytes(b"changed source")
-                baselines.load_or_create_data(root, "svm", cache)
+                baselines.load_or_create_data(root, cache)
                 self.assertEqual(extract.call_count, 2)
-                with mock.patch.dict(baselines.MFCC_CONFIG, {"n_mfcc": 41}):
-                    baselines.load_or_create_data(root, "svm", cache)
+                with mock.patch.dict(baselines.CNN_CONFIG, {"n_mels": 65}):
+                    baselines.load_or_create_data(root, cache)
                 self.assertEqual(extract.call_count, 3)
 
     def test_cnn_fit_uses_cyclic_validation_then_all_non_test_folds(self):

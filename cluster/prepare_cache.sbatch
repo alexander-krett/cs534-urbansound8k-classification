@@ -23,6 +23,6 @@ fi
 source .venv/bin/activate
 
 python src/train_baselines.py \
-    --model both \
+    --model cnn \
     --data-dir "${URBANSOUND_DATA_DIR:-data/UrbanSound8K}" \
     --prepare-cache-only
