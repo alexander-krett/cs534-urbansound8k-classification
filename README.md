@@ -103,3 +103,22 @@ Turing requires SSH access from the WPI network or GlobalProtect VPN. See the
 [Slurm guide](https://docs.turing.wpi.edu/getting-started/slurm_guide/), and
 [job submission guide](https://docs.turing.wpi.edu/getting-started/submitting/)
 for access, account associations, and scheduler use.
+
+## Reproduce the SVM comparison
+
+The report's MFCC, CLAP, and BEATs results come from the common-subset
+comparison on Katie's `svm_katie` branch, at commit `ad4f891`. Use the three
+feature CSVs produced by that revision:
+
+```bash
+uv run python src/compare_svm.py \
+  --mfcc /path/to/mfcc_features.csv \
+  --clap /path/to/clap_features.csv \
+  --beats /path/to/beats_features.csv \
+  --output-dir models/svm_comparison
+```
+
+The script intersects the three feature tables before cross-validation.
+The original intersection has 8,713 clips because the BEATs extractor
+skipped 19 very short clips. Outputs include held-out predictions, metrics,
+and confusion matrices for the shared clips.

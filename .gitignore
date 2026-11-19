@@ -19,6 +19,7 @@ features/*.npz
 models/*.joblib
 models/*.pkl
 models/*.pt
+models/svm_comparison/
 slurm-logs/
 
 # Jupyter
